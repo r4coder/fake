@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000"
+  baseURL: "https://fake-2-w9ip.onrender.com"
 });
 
 export const analyzeJob = (data) => {
