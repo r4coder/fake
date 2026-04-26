@@ -9,6 +9,9 @@ export default function JobForm() {
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  // 🔥 Fallback for safety (VERY IMPORTANT)
+  const API_URL ="https://fake-2-w9ip.onrender.com";
+
   const handleSubmit = async () => {
     if (!jobText || !companyName || !email) {
       alert("Please fill all fields");
@@ -19,14 +22,15 @@ export default function JobForm() {
     setResult(null);
 
     try {
-      const res = await axios.post("http://localhost:5000/analyze", {
+      const res = await axios.post(`${API_URL}/analyze`, {
         jobText,
         companyName,
-        email
+        email,
       });
 
       setResult(res.data);
     } catch (err) {
+      console.error("Backend error:", err);
       alert("Error connecting to backend");
     }
 
@@ -35,7 +39,6 @@ export default function JobForm() {
 
   return (
     <div className="form-container">
-
       <textarea
         placeholder="Paste Job Description..."
         rows={6}
