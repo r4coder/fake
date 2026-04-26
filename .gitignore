@@ -1,0 +1,6 @@
+dataset/
+*.csv
+model.pkl
+vectorizer.pkl
+node_modules/
+.env
